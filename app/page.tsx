@@ -398,7 +398,8 @@ export default function Page() {
                         onClick={handleStart}
                       >
                         Mulai refleksi <ArrowRight className="ml-2 h-4 w-4" />
-                     
+                      </Button>
+                      
                     </div>
                   </div>
 
