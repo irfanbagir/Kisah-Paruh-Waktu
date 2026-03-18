@@ -398,14 +398,7 @@ export default function Page() {
                         onClick={handleStart}
                       >
                         Mulai refleksi <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                      <Button
-                        size="lg"
-                        variant="outline"
-                        className="rounded-2xl border-[#5BA5A7] bg-transparent text-[#211911] hover:bg-[#82BCBF]/20"
-                      >
-                        Lihat trailer
-                      </Button>
+                     
                     </div>
                   </div>
 
