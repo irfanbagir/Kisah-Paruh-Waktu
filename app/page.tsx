@@ -392,6 +392,11 @@ export default function Page() {
                                           </div>
 
                     <div className="mt-10 flex flex-wrap gap-3">
+                      <div className="border-l border-[#82BCBF] bg-gradient-to-br from-[#82BCBF]/35 via-[#20969E] to-[#5BA5A7]/45 p-8 md:p-12 lg:p-14 flex items-center justify-center">
+  <p className="text-[#211911]/60 text-lg">
+    (Space for illustration / visual)
+  </p>
+</div>
                       <Button
                         size="lg"
                         className="rounded-2xl bg-[#AA7C2C] px-6 text-white hover:bg-[#946a25]"
@@ -403,11 +408,7 @@ export default function Page() {
                     </div>
                   </div>
 
-                  <div className="border-l border-[#82BCBF] bg-gradient-to-br from-[#82BCBF]/35 via-[#20969E] to-[#5BA5A7]/45 p-8 md:p-12 lg:p-14 flex items-center justify-center">
-  <p className="text-[#211911]/60 text-lg">
-    (Space for illustration / visual)
-  </p>
-</div>
+                  
                 </div>
               </Card>
             </motion.div>
