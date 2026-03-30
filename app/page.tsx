@@ -409,19 +409,19 @@ const resetFlow = () => {
               className="w-full"
             >
               <Card className="overflow-hidden rounded-[2rem] border-[#82BCBF] bg-[#F6F8FA] shadow-2xl backdrop-blur">
-                <div className="grid lg:grid-cols-2">
+                <div className="grid lg:grid-cols-1">
                   <div className="flex flex-col justify-between p-8 md:p-12 lg:p-14">
                     <div className="space-y-6">
                       <Badge className="w-fit rounded-full bg-[#82BCBF]/40 px-4 py-1 text-[#211911] hover:bg-[#82BCBF]/40">
                         #Kisah Paruh Waktu
                       </Badge>
 
-                  <div className="mx-auto w-full overflow-hidden rounded-xl md:h-80 lg:h-full">
+                  <div className="mx-auto w-full overflow-hidden rounded-xl  h-max-content">
           <img
             src="/images/interlude1.jpeg"
             style={{  borderRadius: "20px" }}
-            alt="Interlude 1"
-            className="h-full  mx-auto"
+            alt="Intro Image"
+            className="mx-auto"
           />
         </div>
 
