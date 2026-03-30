@@ -290,7 +290,7 @@ function trackEvent(eventName: string, payload?: Record<string, unknown>) {
 }
 
 export default function Page() {
-  const [screen, setScreen] = useState<'intro' | 'quiz' | 'result'>('intro');
+  const [screen, setScreen] = useState<'intro' | 'quiz' | 'interlude1' | 'interlude2' | 'result'>('intro');
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<Array<Partial<ScoreMap> | undefined>>([]);
   const [isSharing, setIsSharing] = useState(false);
@@ -310,38 +310,52 @@ export default function Page() {
   const topThree = ranking.slice(0, 3).map(([key]) => archetypes[key]);
 
   const handleStart = () => {
-    trackEvent('microsite_started');
-    setScreen('quiz');
-  };
+  trackEvent('microsite_started');
+  setScreen('quiz');
+};
 
-  const handleAnswer = (scores: Partial<ScoreMap>) => {
-    const nextAnswers = [...answers];
-    nextAnswers[index] = scores;
-    setAnswers(nextAnswers);
+const handleAnswer = (scores: Partial<ScoreMap>) => {
+  const nextAnswers = [...answers];
+  nextAnswers[index] = scores;
+  setAnswers(nextAnswers);
 
-    trackEvent('question_answered', {
-      questionId: currentQuestion.id,
-      phase: currentQuestion.phase,
-      answerIndex: index,
-    });
+  trackEvent('question_answered', {
+    questionId: currentQuestion.id,
+    phase: currentQuestion.phase,
+    answerIndex: index,
+  });
 
-    if (index < questions.length - 1) {
-      setTimeout(() => setIndex((value) => value + 1), 160);
-      return;
-    }
-
+  if (currentQuestion.id === 5) {
     setTimeout(() => {
-      trackEvent('result_viewed', { dominant: dominantKey });
-      setScreen('result');
+      setScreen('interlude1');
     }, 160);
-  };
+    return;
+  }
 
-  const resetFlow = () => {
-    trackEvent('quiz_reset');
-    setScreen('intro');
-    setIndex(0);
-    setAnswers([]);
-  };
+  if (currentQuestion.id === 10) {
+    setTimeout(() => {
+      setScreen('interlude2');
+    }, 160);
+    return;
+  }
+
+  if (index < questions.length - 1) {
+    setTimeout(() => setIndex((value) => value + 1), 160);
+    return;
+  }
+
+  setTimeout(() => {
+    trackEvent('result_viewed', { dominant: dominantKey });
+    setScreen('result');
+  }, 160);
+};
+
+const resetFlow = () => {
+  trackEvent('quiz_reset');
+  setScreen('intro');
+  setIndex(0);
+  setAnswers([]);
+};
 
   const handleShare = async () => {
     const shareText = `Hasil refleksiku di Kisah Paruh Waktu: ${dominant.name} — ${dominant.quote}`;
@@ -372,11 +386,11 @@ export default function Page() {
   {/* Background Image */}
   <div
     className="absolute inset-0 bg-cover bg-center"
-    style={{ backgroundImage: "url('images/quiz-bg.jpg')" }}
+    style={{ backgroundImage: "url('/images/full-bg.jpg')" }}
   />
 
   {/* Overlay */}
-  <div className="absolute inset-0 bg-[#20969E]/80" />
+  {/* <div className="absolute inset-0 bg-[#20969E]/80" /> */}
 
   {/* Content */}
   {/* <div className="relative z-10"> */}
@@ -449,6 +463,7 @@ export default function Page() {
             >
               
               <Card className="rounded-[2rem] border-[#82BCBF] bg-[#F6F8FA] shadow-2xl backdrop-blur">
+               
                 <CardHeader className="space-y-5 p-8 md:p-10">
                   <div className="flex items-center justify-between gap-4">
                     <div>
@@ -485,7 +500,7 @@ export default function Page() {
               </Card>
             </motion.div>
           )}
-
+      
           {screen === 'result' && (
             <motion.div
               key="result"
@@ -497,6 +512,8 @@ export default function Page() {
             >
               <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
                 <Card className="rounded-[2rem] border-[#82BCBF] bg-[#F6F8FA] shadow-2xl backdrop-blur">
+                  
+                  
                   <CardHeader className="p-8 md:p-10">
                     <p className="text-sm uppercase tracking-[0.25em] text-[#AA7C2C]">Hasil Utama</p>
                     <CardTitle className="mt-2 text-3xl text-[#211911] md:text-5xl">{dominant.name}</CardTitle>
@@ -583,6 +600,118 @@ export default function Page() {
               </div>
             </motion.div>
           )}
+          {screen === 'interlude1' && (
+  <motion.div
+    key="interlude1"
+    initial={{ opacity: 0, y: 24 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -24 }}
+    transition={{ duration: 0.35 }}
+    className="w-full max-w-4xl"
+  >
+    <Card className="overflow-hidden rounded-[2rem] border-[#82BCBF] bg-[#F6F8FA] shadow-2xl">
+      <div className="grid md:grid-cols-2">
+        <div className="h-full">
+          <img
+            src="/images/interlude.jpg"
+            style={{ margin: "20px 20px" , borderRadius: "20px" }}
+            alt="Interlude 1"
+            className="h-full max-h-[400px] w-full object-cover"
+          />
+        </div>
+
+        <div className="flex flex-col justify-between p-8 md:p-10">
+          <div className="space-y-4">
+            <p className="text-sm uppercase tracking-[0.25em] text-[#AA7C2C]">
+              Interlude
+            </p>
+
+            <h2 className="text-3xl font-semibold leading-tight text-[#211911]">
+              Sisipkan teks penghubung di sini
+            </h2>
+
+            <p className="text-base leading-7 text-[#417579]">
+              Ini adalah ruang transisi emosional setelah Question 5.
+            </p>
+          </div>
+
+          <div className="mt-8">
+            <Button
+              className="rounded-2xl bg-[#AA7C2C] px-6 text-white hover:bg-[#946a25]"
+              onClick={() => {
+                setIndex(5);
+                setScreen('quiz');
+              }}
+            >
+              Lanjut <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </div>
+    </Card>
+  </motion.div>
+)}
+          {screen === 'interlude2' && (
+  <motion.div
+    key="interlude2"
+    initial={{ opacity: 0, y: 24 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -24 }}
+    transition={{ duration: 0.35 }}
+    className="w-full max-w-4xl"
+  >
+    <Card className="overflow-hidden rounded-[2rem] border-[#82BCBF] bg-[#F6F8FA] shadow-2xl">
+      <div className="grid md:grid-cols-2">
+        
+        {/* Image */}
+        <div className="h-full">
+          <img
+            src="/images/interlude.jpg"
+            alt="Interlude 2"
+            className="h-full max-h-[400px] w-full object-cover"
+            style={{ margin: "20px 20px" , borderRadius: "20px" }}
+          />
+        </div>
+
+        {/* Text */}
+        <div className="flex flex-col justify-between p-8 md:p-10">
+          <div className="space-y-4">
+            <p className="text-sm uppercase tracking-[0.25em] text-[#AA7C2C]">
+              Interlude
+            </p>
+
+            <h2 className="text-3xl font-semibold leading-tight text-[#211911]">
+              Sekarang, kamu yang menjadi Ayah
+            </h2>
+
+            <p className="text-base leading-7 text-[#417579]">
+              Cara kita hadir hari ini seringkali adalah bayangan dari bagaimana
+              kita dulu diperlakukan.
+            </p>
+
+            <p className="text-base leading-7 text-[#417579]">
+              Pertanyaannya bukan lagi tentang Ayahmu… tapi tentang kamu,
+              sebagai Ayah berikutnya.
+            </p>
+          </div>
+
+          <div className="mt-8">
+            <Button
+              className="rounded-2xl bg-[#AA7C2C] px-6 text-white hover:bg-[#946a25]"
+              onClick={() => {
+                setIndex(10); // go to Question 11
+                setScreen('quiz');
+              }}
+            >
+              Lanjut <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+
+      </div>
+    </Card>
+  </motion.div>
+)}
         </AnimatePresence>
       </section>
       {/* </div> */}
