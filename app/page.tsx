@@ -616,7 +616,7 @@ const resetFlow = () => {
             src="/images/interlude.jpg"
             style={{ margin: "20px 20px" , borderRadius: "20px" }}
             alt="Interlude 1"
-            className="h-full max-h-[400px] w-full object-cover"
+            className="h-full max-h-[400px] w-full object-cover max-w-[400px] mx-auto"
           />
         </div>
 
