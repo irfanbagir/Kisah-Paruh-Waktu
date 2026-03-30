@@ -613,10 +613,10 @@ const resetFlow = () => {
       <div className="grid md:grid-cols-2">
         <div className="h-full">
           <img
-            src="/images/interlude.jpg"
-            style={{ margin: "20px 20px" , borderRadius: "20px" }}
+            src="/images/interlude1.jpeg"
+            style={{  borderRadius: "20px" }}
             alt="Interlude 1"
-            className="h-full max-h-[400px] w-full object-cover max-w-[400px] mx-auto"
+            className="h-full max-h-[500px] w-full object-cover max-w-[400px] mx-auto"
           />
         </div>
 
