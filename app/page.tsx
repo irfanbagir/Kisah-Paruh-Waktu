@@ -607,16 +607,17 @@ const resetFlow = () => {
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -24 }}
     transition={{ duration: 0.35 }}
-    className="w-full max-w-4xl"
+    className="w-full max-w-4xl mt-0"
   >
+
     <Card className="overflow-hidden rounded-[2rem] border-[#82BCBF] bg-[#F6F8FA] shadow-2xl">
-      <div className="grid md:grid-cols-2">
+      <div className="grid md:grid-cols-2" >
         <div className="h-full">
           <img
             src="/images/interlude1.jpeg"
             style={{  borderRadius: "20px" }}
             alt="Interlude 1"
-            className="h-full max-h-[500px] w-full object-cover max-w-[400px] mx-auto"
+            className="h-full  mx-auto"
           />
         </div>
 
@@ -666,10 +667,10 @@ const resetFlow = () => {
         {/* Image */}
         <div className="h-full">
           <img
-            src="/images/interlude.jpg"
+            src="/images/interlude1.jpeg"
             alt="Interlude 2"
-            className="h-full max-h-[400px] w-full object-cover"
-            style={{ margin: "20px 20px" , borderRadius: "20px" }}
+            className="h-full mx-auto"
+            style={{ borderRadius: "20px" }}
           />
         </div>
 
