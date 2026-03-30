@@ -587,7 +587,7 @@ const resetFlow = () => {
                     <CardHeader className="p-8 pb-4">
                       <CardTitle className="text-2xl text-[#211911]">Campuran terkuat</CardTitle>
                     </CardHeader>
-                    <CardContent className="grid gap-4 p-8 pt-0 md:grid-cols-3">
+                    <CardContent className="grid gap-4 p-8 pt-0 md:grid-cols-1">
                       {topThree.map((item) => (
                         <div key={item.code} className="rounded-3xl border border-[#82BCBF] bg-white/90 p-5">
                           <p className="text-sm uppercase tracking-[0.2em] text-[#417579]">{item.code}</p>
