@@ -367,7 +367,20 @@ export default function Page() {
   };
 
   return (
-    <main className="min-h-screen bg-[#20969E] text-white">
+    <main className="relative min-h-screen text-white">
+
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{ backgroundImage: "url('images/quiz-bg.jpg')" }}
+  />
+
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-[#20969E]/80" />
+
+  {/* Content */}
+  {/* <div className="relative z-10"> */}
+  
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(246,248,250,0.22),transparent_35%),radial-gradient(circle_at_bottom,rgba(170,124,44,0.18),transparent_30%)]" />
 
       <section className="relative mx-auto flex min-h-screen w-full max-w-7xl items-center justify-center px-4 py-8 md:px-8">
@@ -389,14 +402,19 @@ export default function Page() {
                         #KisahParuhWaktu
                       </Badge>
 
-                                          </div>
+                      <div className="space-y-4">
+                        <h1 className="max-w-3xl text-4xl font-semibold leading-tight text-[#211911] md:text-6xl">
+                          Refleksi interaktif tentang Ayah, waktu, dan hal-hal yang tak selalu sempat diucapkan.
+                        </h1>
+                        <p className="max-w-2xl text-base leading-7 text-[#417579] md:text-lg md:leading-8">
+                          Versi Next.js ini disusun agar lebih siap produksi: struktur komponen rapi, state aman,
+                          mudah disambungkan ke analytics, share result, backend, atau CMS bila campaign-nya tumbuh
+                          jadi sesuatu yang lebih besar.
+                        </p>
+                      </div>
+                    </div>
 
                     <div className="mt-10 flex flex-wrap gap-3">
-                      <div className="border-l border-[#82BCBF] bg-gradient-to-br from-[#82BCBF]/35 via-[#20969E] to-[#5BA5A7]/45 p-8 md:p-12 lg:p-14 flex items-center justify-center">
-  <p className="text-[#211911]/60 text-lg">
-    (Space for illustration / visual)
-  </p>
-</div>
                       <Button
                         size="lg"
                         className="rounded-2xl bg-[#AA7C2C] px-6 text-white hover:bg-[#946a25]"
@@ -404,11 +422,17 @@ export default function Page() {
                       >
                         Mulai refleksi <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
-                      
                     </div>
                   </div>
 
-                  
+                  <div className="border-l border-[#82BCBF] bg-gradient-to-br from-[#82BCBF]/35 via-[#20969E] to-[#5BA5A7]/45 p-8 md:p-12 lg:p-14 flex items-center justify-center">
+                    <div className="text-center">
+                      <p className="text-sm uppercase tracking-[0.25em] text-[#211911]/60">Visual Space</p>
+                      <p className="mt-3 text-lg text-[#211911]/80">
+                        Tambahkan ilustrasi, poster film, atau visual campaign di sini.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </Card>
             </motion.div>
@@ -423,12 +447,15 @@ export default function Page() {
               transition={{ duration: 0.25 }}
               className="w-full max-w-3xl"
             >
+              
               <Card className="rounded-[2rem] border-[#82BCBF] bg-[#F6F8FA] shadow-2xl backdrop-blur">
                 <CardHeader className="space-y-5 p-8 md:p-10">
                   <div className="flex items-center justify-between gap-4">
                     <div>
                       <p className="text-sm uppercase tracking-[0.25em] text-[#AA7C2C]">{currentQuestion.phase}</p>
-                      <CardTitle className="mt-2 text-2xl text-[#211911] md:text-3xl">Question {currentQuestion.id}</CardTitle>
+                      <CardTitle className="mt-2 text-2xl text-[#211911] md:text-3xl">
+                        Question {currentQuestion.id}
+                      </CardTitle>
                     </div>
                     <Badge className="rounded-full bg-[#82BCBF]/45 px-4 py-1 text-[#211911] hover:bg-[#82BCBF]/45">
                       {index + 1}/{questions.length}
@@ -558,6 +585,7 @@ export default function Page() {
           )}
         </AnimatePresence>
       </section>
+      {/* </div> */}
     </main>
   );
 }
