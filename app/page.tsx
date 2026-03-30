@@ -413,17 +413,26 @@ const resetFlow = () => {
                   <div className="flex flex-col justify-between p-8 md:p-12 lg:p-14">
                     <div className="space-y-6">
                       <Badge className="w-fit rounded-full bg-[#82BCBF]/40 px-4 py-1 text-[#211911] hover:bg-[#82BCBF]/40">
-                        #KisahParuhWaktu
+                        #Kisah Paruh Waktu
                       </Badge>
 
+                  <div className="mx-auto w-full overflow-hidden rounded-xl md:h-80 lg:h-full">
+          <img
+            src="/images/interlude1.jpeg"
+            style={{  borderRadius: "20px" }}
+            alt="Interlude 1"
+            className="h-full  mx-auto"
+          />
+        </div>
+
                       <div className="space-y-4">
-                        <h1 className="max-w-3xl text-4xl font-semibold leading-tight text-[#211911] md:text-6xl">
+                        <h1 className="max-w-3xl text-2xl font-semibold leading-tight text-[#211911] md:text-6xl">
                           Refleksi interaktif tentang Ayah, waktu, dan hal-hal yang tak selalu sempat diucapkan.
                         </h1>
                         <p className="max-w-2xl text-base leading-7 text-[#417579] md:text-lg md:leading-8">
-                          Versi Next.js ini disusun agar lebih siap produksi: struktur komponen rapi, state aman,
+                          {/* Versi Next.js ini disusun agar lebih siap produksi: struktur komponen rapi, state aman,
                           mudah disambungkan ke analytics, share result, backend, atau CMS bila campaign-nya tumbuh
-                          jadi sesuatu yang lebih besar.
+                          jadi sesuatu yang lebih besar. */}
                         </p>
                       </div>
                     </div>
@@ -439,14 +448,6 @@ const resetFlow = () => {
                     </div>
                   </div>
 
-                  <div className="border-l border-[#82BCBF] bg-gradient-to-br from-[#82BCBF]/35 via-[#20969E] to-[#5BA5A7]/45 p-8 md:p-12 lg:p-14 flex items-center justify-center">
-                    <div className="text-center">
-                      <p className="text-sm uppercase tracking-[0.25em] text-[#211911]/60">Visual Space</p>
-                      <p className="mt-3 text-lg text-[#211911]/80">
-                        Tambahkan ilustrasi, poster film, atau visual campaign di sini.
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </Card>
             </motion.div>
