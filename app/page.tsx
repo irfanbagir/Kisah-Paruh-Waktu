@@ -415,7 +415,7 @@ const resetFlow = () => {
                       
                   <div className="mx-auto w-full overflow-hidden rounded-xl  h-max-content">
           <img
-            src="/images/front-1.png"
+            src="/images/front-2.png"
             style={{  borderRadius: "20px" }}
             alt="Intro Image"
             className="mx-auto"
