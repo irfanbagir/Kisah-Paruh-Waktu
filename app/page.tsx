@@ -409,7 +409,7 @@ const resetFlow = () => {
               className="w-full"
             >
               <Card className="overflow-hidden rounded-[2rem] border-[#82BCBF] bg-[#20969E] shadow-2xl">
-                <div className="grid md:grid-cols-2">
+                <div className="">
                   <div className="flex flex-col justify-between p-4 md:p-8 lg:p-12 mx-auto">
                     <div className="space-y-6">
                       
