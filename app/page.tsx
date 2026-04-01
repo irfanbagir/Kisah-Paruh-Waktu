@@ -432,7 +432,7 @@ const resetFlow = () => {
                       <Button
                         size="lg"
                         style={{ fontSize: 18 }}
-                        className="rounded-4xl bg-[#058877] px-18 py-8 text-white hover:bg-[#0BB7A1]"
+                        className="rounded-4xl bg-[#FFFFFF] px-18 py-8 text-black hover:bg-[#0BB7A1]"
                         onClick={handleStart}
                       >
                         Mulai refleksi <ArrowRight className="ml-2 h-4 w-4" />
