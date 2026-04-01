@@ -408,9 +408,9 @@ const resetFlow = () => {
               transition={{ duration: 0.35 }}
               className="w-full"
             >
-              <Card className="overflow-hidden rounded-[2rem] border-[#82BCBF] bg-[#20969E] shadow-2xl mx-auto">
+              <Card className="overflow-hidden rounded-[2rem] border-[#82BCBF] bg-[#20969E] shadow-2xl">
                 <div className="grid md:grid-cols-2">
-                  <div className="flex flex-col justify-between p-8 md:p-12 lg:p-14">
+                  <div className="flex flex-col justify-between p-4 md:p-8 lg:p-12 mx-auto">
                     <div className="space-y-6">
                       
                   <div className="mx-auto w-full overflow-hidden rounded-xl  h-max-content">
