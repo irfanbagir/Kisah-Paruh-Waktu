@@ -408,39 +408,31 @@ const resetFlow = () => {
               transition={{ duration: 0.35 }}
               className="w-full"
             >
-              <Card className="overflow-hidden rounded-[2rem] border-[#82BCBF] bg-[#F6F8FA] shadow-2xl backdrop-blur">
-                <div className="grid lg:grid-cols-1">
+              <Card className="overflow-hidden rounded-[2rem] border-[#82BCBF] bg-[#20969E] shadow-2xl ">
+                <div className="grid md:grid-cols-2">
                   <div className="flex flex-col justify-between p-8 md:p-12 lg:p-14">
                     <div className="space-y-6">
-                      <Badge className="w-fit rounded-full bg-[#82BCBF]/40 px-4 py-1 text-[#211911] hover:bg-[#82BCBF]/40">
-                        #Kisah Paruh Waktu
-                      </Badge>
-
+                      
                   <div className="mx-auto w-full overflow-hidden rounded-xl  h-max-content">
           <img
-            src="/images/interlude1.jpeg"
+            src="/images/front-1.png"
             style={{  borderRadius: "20px" }}
             alt="Intro Image"
             className="mx-auto"
           />
         </div>
 
-                      <div className="space-y-4">
-                        <h1 className="max-w-3xl text-2xl font-semibold leading-tight text-[#211911] md:text-6xl">
-                          Refleksi interaktif tentang Ayah, waktu, dan hal-hal yang tak selalu sempat diucapkan.
-                        </h1>
-                        <p className="max-w-2xl text-base leading-7 text-[#417579] md:text-lg md:leading-8">
-                          {/* Versi Next.js ini disusun agar lebih siap produksi: struktur komponen rapi, state aman,
-                          mudah disambungkan ke analytics, share result, backend, atau CMS bila campaign-nya tumbuh
-                          jadi sesuatu yang lebih besar. */}
-                        </p>
+                      <div className="flex flex-col justify-center p-8 md:p-8 lg:p-8 space-y-3" >
+                        
+                        
                       </div>
                     </div>
 
-                    <div className="mt-10 flex flex-wrap gap-3">
+                    <div className="flex flex-col justify-center px-6 py-1 md:p-12 lg:p-14 space-y-2" >
                       <Button
                         size="lg"
-                        className="rounded-2xl bg-[#AA7C2C] px-6 text-white hover:bg-[#946a25]"
+                        style={{ fontSize: 18 }}
+                        className="rounded-4xl bg-[#058877] px-18 py-8 text-white hover:bg-[#0BB7A1]"
                         onClick={handleStart}
                       >
                         Mulai refleksi <ArrowRight className="ml-2 h-4 w-4" />
