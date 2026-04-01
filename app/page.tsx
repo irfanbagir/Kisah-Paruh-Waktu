@@ -290,7 +290,8 @@ function trackEvent(eventName: string, payload?: Record<string, unknown>) {
 }
 
 export default function Page() {
-  const [screen, setScreen] = useState<'intro' | 'quiz' | 'interlude1' | 'interlude2' | 'result'>('intro');
+  const [screen, setScreen] = useState<'intro' | 'quiz' | 'interlude1' | 'interlude2' | 'email' | 'result'
+>('intro');
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<Array<Partial<ScoreMap> | undefined>>([]);
   const [isSharing, setIsSharing] = useState(false);
@@ -308,6 +309,33 @@ export default function Page() {
   const dominantKey = ranking[0]?.[0] ?? 'PR';
   const dominant = archetypes[dominantKey];
   const topThree = ranking.slice(0, 3).map(([key]) => archetypes[key]);
+
+  const [email, setEmail] = useState('');
+  const [isSubmittingEmail, setIsSubmittingEmail] = useState(false);
+  const [emailStatus, setEmailStatus] = useState<string | null>(null);
+
+const handleEmailSubmit = async () => {
+  if (!email) {
+    setEmailStatus('Masukkan email dulu ya.');
+    return;
+  }
+
+  try {
+    setIsSubmittingEmail(true);
+    setEmailStatus(null);
+
+    // OPTIONAL: send to API here later
+
+    setTimeout(() => {
+      setScreen('result');
+    }, 600);
+
+  } catch (error) {
+    setEmailStatus('Terjadi kesalahan.');
+  } finally {
+    setIsSubmittingEmail(false);
+  }
+};
 
   const handleStart = () => {
   trackEvent('microsite_started');
@@ -346,7 +374,7 @@ const handleAnswer = (scores: Partial<ScoreMap>) => {
 
   setTimeout(() => {
     trackEvent('result_viewed', { dominant: dominantKey });
-    setScreen('result');
+    setScreen('email');
   }, 160);
 };
 
@@ -493,6 +521,51 @@ const resetFlow = () => {
               </Card>
             </motion.div>
           )}
+
+          {screen === 'email' && (
+  <motion.div
+    key="email"
+    initial={{ opacity: 0, y: 24 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -24 }}
+    transition={{ duration: 0.35 }}
+    className="w-full max-w-xl"
+  >
+    <Card className="rounded-[2rem] border-[#82BCBF] bg-[#F6F8FA] shadow-2xl p-8 md:p-10 text-center">
+      
+      <h2 className="text-3xl font-semibold text-[#211911]">
+        Lihat hasil refleksimu
+      </h2>
+
+      <p className="mt-3 text-[#417579]">
+        Masukkan email untuk melihat hasil dan menyimpannya.
+      </p>
+
+      <div className="mt-6 space-y-4">
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="nama@email.com"
+          className="w-full rounded-2xl border border-[#82BCBF] bg-white px-4 py-3 text-[#211911] outline-none"
+        />
+
+        <Button
+          className="w-full rounded-2xl bg-[#AA7C2C] text-white"
+          onClick={handleEmailSubmit}
+          disabled={isSubmittingEmail}
+        >
+          {isSubmittingEmail ? 'Memproses...' : 'Lihat hasil'}
+        </Button>
+
+        {emailStatus && (
+          <p className="text-sm text-[#417579]">{emailStatus}</p>
+        )}
+      </div>
+
+    </Card>
+  </motion.div>
+)} 
       
           {screen === 'result' && (
             <motion.div
